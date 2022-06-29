@@ -50,17 +50,13 @@ function Problems() {
                 
             </div>
             <div className='Bottom' style={{ display: 'flex'}}>
-                    <div className="Buttton" style={{ flex: 1,textAlign:'center',background:'orange'}}>
                         {
-                             ( Number(id) > 0) && <Link style={{display:'block', padding:'10px'}}to={`/problems/${Number(id) - 1}`} >prev</Link>
+                             ( Number(id) > 0) && <Link style={{display:'block', padding:'10px' ,flex: 1,textAlign:'center' ,background:'orange'}}to={`/problems/${Number(id) - 1}`} >prev</Link>
                         }
-                    </div>
                     <div onClick={() => showAnswerView() }style={{flex:1,textAlign:'center'}}>정답보기</div>
-                    <div className="Buttton" style={{ flex: 1,textAlign:'center' ,background:'orange',}}>
                         {
-                            page.length-1 !== (Number(id) ) && <Link style={{display:'block', padding:'10px'}}to={`/problems/${Number(id) +1}`} >next</Link>
+                            page.length-1 !== (Number(id) ) && <Link style={{ flex: 1,textAlign:'center' ,background:'orange',display:'block', padding:'10px'}}to={`/problems/${Number(id) +1}`} >next</Link>
                         }
-                    </div>
                 </div>
         </div>
     );
