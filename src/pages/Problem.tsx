@@ -20,7 +20,6 @@ function Problems() {
     useEffect(() => {
         setAnswer(false);
         setLanguage(true);
-        console.log(id)
     },[id]);
     return (
         <div className="Problem">
@@ -47,20 +46,22 @@ function Problems() {
                 {
                     answer && <div>{data[2]}</div>
                 }
-                <div style={{ display: 'flex', }}>
+                
+                
+            </div>
+            <div className='Bottom' style={{ display: 'flex',}}>
                     <div className="Buttton" style={{ flex: 1,textAlign:'center',background:'orange'}}>
                         {
                              ( Number(id) > 0) && <Link to={`/problems/${Number(id) - 1}`} >prev</Link>
                         }
                     </div>
                     <div onClick={() => showAnswerView() }style={{flex:1,textAlign:'center'}}>정답보기</div>
-                    <div className="Buttton" style={{ flex: 1,textAlign:'center' ,background:'orange'}}>
+                    <div className="Buttton" style={{ flex: 1,textAlign:'center' ,background:'orange',}}>
                         {
                             page.length-1 !== (Number(id) ) && <Link to={`/problems/${Number(id) +1}`} >next</Link>
                         }
                     </div>
                 </div>
-            </div>
         </div>
     );
 }

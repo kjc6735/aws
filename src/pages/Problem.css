@@ -8,9 +8,14 @@
    a:hover { 
     text-decoration: underline;
    } */
+.Problem{
+    height: 100%;
+}
 .Problem .Contents {
     width:700px;
-    margin: 0 auto
+    margin: 0 auto;
+    height: 90%;
+    overflow: auto;
 }
 .Problem .Title {
     display:flex;
@@ -28,6 +33,9 @@
 .Problem .Title .Button a:visited{
     text-decoration: none;
     color:black;
+}
+.Bottom{
+   
 }
 @media only screen and (max-width: 600px) {
     .Problem .Contents {
