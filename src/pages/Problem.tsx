@@ -5,33 +5,30 @@ import { useParams } from 'react-router-dom';
 import { usePages } from '../hooks/usePage';
 import { useProblem } from '../hooks/useProblem';
 import './Problem.css';
-
+import { data } from '../datas/data';
 function Problems() {
     const { id } = useParams();
-    const { data: page } = usePages();
+    const page = usePages();
     
-    const { data, isLoading, isError } = useProblem(Number(id));
-    const [answer, setAnswer] = useState<any>();
-
-
-    const [showAnswer, setShowAnswer] = useState<boolean>();
+    const data = useProblem(Number(id));
+    const [answer, setAnswer] = useState<boolean>();
     const [language, setLanguage] = useState<boolean>(true);
-
+    console.log(page, data,)
 
     const changeLanguage = useCallback(() => setLanguage(!language),[language]);
     const showAnswerView = useCallback(() => setAnswer(!answer), [answer]);
     useEffect(() => {
-        setShowAnswer(false);
+        setAnswer(false);
         setLanguage(true);
+        console.log(id)
     },[id]);
-    if (isLoading) return <div>loading...</div>
     return (
         <div className="Problem">
             <div className="Contents">
                 <div className="Title">
                     <div className="Buttton">
                         {
-                            page[0].id !== (Number(id) ) && <Link to={`/problems/${Number(id) - 1}`} >prev</Link>
+                             ( Number(id) > 0) && <Link to={`/problems/${Number(id) - 1}`} >prev</Link>
                         }
                     </div>
                     <div style={{flex:1, textAlign:'center'}}>
@@ -39,15 +36,15 @@ function Problems() {
                     </div>
                     <div className="Buttton">
                         {
-                            page[page.length-1].id !== (Number(id) ) && <Link to={`/problems/${Number(id) +1}`} >next</Link>
+                            page.length-1 !== (Number(id) ) && <Link to={`/problems/${Number(id) +1}`} >next</Link>
                         }
                     </div>
                 </div>
                 <div className='Body'>
                     {
-                        language ? data.data.problem_ko.split('\n').map( (line:any) => {
+                        language ? data[0].split('\n').map( (line:any) => {
                             return (<span>{line}<br/></span>)
-                        }) :  data.data.problem_en.split('\n').map( (line:any) => {
+                        }) :  data[1].split('\n').map( (line:any) => {
                             return (<span>{line}<br/></span>)
                         })
                     }
@@ -55,6 +52,10 @@ function Problems() {
                 <div>
                     <Link to="/" >홈</Link>
                     <div onClick={() => changeLanguage()}>원문보기</div>
+                    <div onClick={() => showAnswerView()}>정답보기</div>
+                    {
+                        answer && <div>{data[2]}</div>
+                    }
                 </div>
             </div>
         </div>
