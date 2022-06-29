@@ -14,6 +14,7 @@
 }
 .Problem .Title {
     display:flex;
+    padding:10px;
 }
 .Problem .Title .Button a{
     text-decoration: none;
@@ -27,4 +28,9 @@
 .Problem .Title .Button a:visited{
     text-decoration: none;
     color:black;
+}
+@media only screen and (max-width: 600px) {
+    .Problem .Contents {
+        width:100%;
+    }
 }

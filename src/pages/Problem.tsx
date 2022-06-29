@@ -43,9 +43,9 @@ function Problems() {
                 <div className='Body'>
                     {
                         language ? data[0].split('\n').map( (line:any) => {
-                            return (<span>{line}<br/></span>)
+                            return (<div style={{marginBottom:'10px'}}>{line}<br/></div>)
                         }) :  data[1].split('\n').map( (line:any) => {
-                            return (<span>{line}<br/></span>)
+                            return (<div style={{marginBottom:'10px'}}>{line}<br/></div>)
                         })
                     }
                 </div>
