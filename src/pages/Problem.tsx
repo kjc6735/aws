@@ -26,36 +26,39 @@ function Problems() {
         <div className="Problem">
             <div className="Contents">
                 <div className="Title">
-                    <div className="Buttton">
-                        {
-                             ( Number(id) > 0) && <Link to={`/problems/${Number(id) - 1}`} >prev</Link>
-                        }
-                    </div>
+                    <Link to="/" style={{display:'block'}} >홈</Link>
                     <div style={{flex:1, textAlign:'center'}}>
                         { `문제${id}` }
                     </div>
-                    <div className="Buttton">
-                        {
-                            page.length-1 !== (Number(id) ) && <Link to={`/problems/${Number(id) +1}`} >next</Link>
-                        }
-                    </div>
+                    <div onClick={() => changeLanguage()}>원문보기</div>
+
                 </div>
                 <div className='Body'>
                     {
-                        language ? data[0].split('\n').map( (line:any) => {
+                        language ? data[0].split('\n').map((line: any) => {
                             return (<div style={{marginBottom:'10px'}}>{line}<br/></div>)
                         }) :  data[1].split('\n').map( (line:any) => {
                             return (<div style={{marginBottom:'10px'}}>{line}<br/></div>)
                         })
                     }
                 </div>
-                <div>
-                    <Link to="/" >홈</Link>
-                    <div onClick={() => changeLanguage()}>원문보기</div>
-                    <div onClick={() => showAnswerView()}>정답보기</div>
-                    {
-                        answer && <div>{data[2]}</div>
-                    }
+                <br />
+                <br />
+                {
+                    answer && <div>{data[2]}</div>
+                }
+                <div style={{ display: 'flex', }}>
+                    <div className="Buttton" style={{ flex: 1,textAlign:'center',background:'orange'}}>
+                        {
+                             ( Number(id) > 0) && <Link to={`/problems/${Number(id) - 1}`} >prev</Link>
+                        }
+                    </div>
+                    <div onClick={() => showAnswerView() }style={{flex:1,textAlign:'center'}}>정답보기</div>
+                    <div className="Buttton" style={{ flex: 1,textAlign:'center' ,background:'orange'}}>
+                        {
+                            page.length-1 !== (Number(id) ) && <Link to={`/problems/${Number(id) +1}`} >next</Link>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
