@@ -10,11 +10,10 @@ import MainPage from './pages/Main';
 function App() {
   return (
     <Routes>
-        <div>test</div>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/problems' element={<MainPage />} />
-        <Route path='/problems/:id' element={<Problems/>} />
-      </Routes>
+      <Route path='/' element={<MainPage />} />
+      <Route path='/problems' element={<MainPage />} />
+      <Route path='/problems/:id' element={<Problems/>} />
+    </Routes>
   );
 }
 
